@@ -1,0 +1,219 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.store-wrapper {
+	background-color: white;
+}
+
+.store-indivproduct {
+ 	width: 100%; 
+	height: 1000px;
+    overflow-y: scroll;
+    background-color: white;
+}
+
+.store-indivproductinner {
+ 	width: 90%; 
+ 	margin: auto;
+}
+
+.store-indivproduct-notice {
+	padding-top: 5%;
+}
+
+.store-indivproduct h2 {
+  	font-family: 'Share Tech Mono', sans-serif;
+  	font-size: 200%;
+  	color: gray; 
+}
+
+.store-indivproduct-name h1 {
+    font-family: 'Michroma', sans-serif;
+  	font-size: 275%;
+  	color: black; 
+  	padding-bottom: 3%;
+}
+
+.store-indivproduct-photo {
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+
+.store-indivproduct-name store-inner h1 {
+  	padding: 0;
+}
+
+.store-indivproduct-desc p {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 150%;
+	padding-bottom: 0;
+	color: black;
+}
+
+.store-indivproduct-desc h3 {
+    text-align: left;
+    padding-bottom: 3%;
+}
+
+.store-indivproduct-color p {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 150%;
+	color: black;
+	padding-bottom: 3%;
+}
+
+.store-indivproduct-price p {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 150%;
+	color: black;
+	padding-bottom: 3%;	
+}
+
+.store-indivproduct-buttons {
+	padding-top: 8%;
+	padding-bottom: 30%;
+}
+
+.store-table {
+	margin: 0;
+}
+
+th, td {
+	padding-right: 5%;
+}
+
+th {
+	font-family: 'Share Tech Mono', sans-serif;
+	font-size: 200%;	
+	padding-bottom: 3%;
+	line-height: 100%;
+}
+
+td {
+	padding-bottom: 1%;
+
+}
+
+td a:hover { 
+    background-color: white;
+    text-decoration: none;
+    color: inherit;
+}
+
+.store-product-image {
+	width: 30%;
+}
+
+.store-product-image, store-product-desc, store-product-colour, store-product-actions {
+	width: 17%;
+}
+ 
+
+
+
+.store-indivproductinner .btn-group {
+	padding-bottom: 3%;
+} 
+
+.store-indivproductinner .btn-danger {
+	font-family: 'Michroma', sans-serif;
+} 
+
+
+
+/* COMMENT */
+.store-indivproductinner label {
+ 	color: black;
+}
+
+.store-indivproductinner p {
+ 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ 	color: black;
+}
+
+.store-indivproductinner h4 {
+ 	font-family: 'Share Tech Mono', sans-serif;
+	font-size: 225%;	
+	color: black;
+}
+
+#comment_body, #comment_rating {
+	color: black;
+}
+
+.product_reviews p {
+	color: black;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 150%;
+	color: black;
+}
+
+.rated {
+	padding-bottom: 1%;
+}
+/* COMMENT */
+
+
+
+/* PRODUCTS INDEX MOBILE */
+.products-index-sm {
+	padding-top: 45%;
+	padding-bottom: 100%;
+}
+
+.products-index-title-sm {
+	padding-top: 25%;
+	padding-bottom: 50%;
+}
+
+.products-index-title-sm{
+	padding-top: 25%;
+	padding-bottom: 50%;
+}
+
+.products-index-title-sm h1 {
+	font-family: 'michroma', sans-serif;
+	font-size: 225%;	
+	color: black;
+}
+
+.products-index-title-sm h2 {
+	font-family: 'michroma', sans-serif;
+	font-size: 150%;	
+	color: gray;
+}
+
+.products-index-title-sm h3 {
+text-align: left;
+}
+
+
+
+.product-index-sm h1 {
+	font-family: 'Share Tech Mono', sans-serif;
+	font-size: 225%;	
+	color: black;
+}
+
+.product-index-sm h3 {
+	font-family: 'verdana', sans-serif;
+	font-size: 125%;	
+	color: black;
+	text-align: left;
+}
+
+.product-index-sm p {
+	font-family: 'verdana', sans-serif;
+	font-size: 125%;	
+	color: black;
+}
+
+.product-index-sm h5 {
+	text-align: center;
+	font-family: 'Share Tech Mono', sans-serif;
+	font-size: 200%;
+	color: black;
+}
+
+/* PRODUCTS INDEX MOBILE */

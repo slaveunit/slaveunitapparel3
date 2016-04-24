@@ -1,0 +1,88 @@
+<div class="store-wrapper">
+
+	<div class="store-inner">
+
+		<div class="store-title visible-lg-block visible-md-block">
+			<h1>SLAVE UNIT APPAREL</h1>
+			<h2>STORE</h2>
+			<h3>Available Late 2016</h3>
+		</div>
+
+		<div class="store-title-sm visible-xs-block visible-sm-block">
+			<h1>SLAVE UNIT</h1> 
+			<h1>APPAREL</h1>
+			<h2>STORE</h2>
+			<h3>Available Late 2016</h3>
+		</div>
+
+
+
+		<div class="merchandise visible-lg-block visible-md-block">
+
+			<% @products.each do |product| %>
+				<div class="store-item">
+					<h2><%= product.name %></h2>
+					<%= image_tag (product.photo_file_name), :style => "margin: auto", :class => "img-responsive" %>
+					<p><%= product.description %></p>
+					<h6>Available Late 2016</h6>
+					<h5>The small price to pay:</h5>
+					<p>US$<%= product.price %></p>
+					<div class="btn-group">
+	  					<button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    Sizes <span class="caret"></span>
+	  					</button>
+	  					<ul class="dropdown-menu">
+	    					<li><a href="#">SM</a></li>
+	    					<li><a href="#">MD</a></li>
+	    					<li><a href="#">LG</a></li>
+	  					</ul>
+	  					<button type="button" class="btn btn-default btn-sm">Add to Cart</button>
+					</div>
+				</div>
+			<% end %>
+
+		</div><!-- end merchandise -->
+
+
+
+
+		<div class="merchandise-sm visible-sm-block visible-xs-block">
+
+			<% @products.each do |product| %>
+				<div class="store-item-sm">
+					<h2><%= product.name %></h2>
+					<%= image_tag (product.photo_file_name), :style => "margin: auto", :class => "img-responsive" %>
+					<p><%= product.description %></p>
+					<h6>Available Late 2016</h6>
+					<h5>The small price to pay:</h5>
+					<p>US$<%= product.price %></p>
+					<div class="btn-group">
+	  					<button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    Sizes <span class="caret"></span>
+	  					</button>
+	  					<ul class="dropdown-menu">
+	    					<li><a href="#">SM</a></li>
+	    					<li><a href="#">MD</a></li>
+	    					<li><a href="#">LG</a></li>
+	  					</ul>
+	  					<button type="button" class="btn btn-default btn-sm">Add to Cart</button>
+					</div>
+				</div>
+			<% end %>
+
+		</div><!-- end merchandise-sm -->
+
+
+
+
+		<div class="disclaimer visible-lg-block visible-md-block">
+			<p>T-SHIRT MOCK-UP: upstatemerch.com/download-our-t-shirt-mockup-template-for-free/</p>
+		</div>
+
+		<div class="disclaimer-sm visible-sm-block visible-xs-block">
+			<p>T-SHIRT MOCK-UP: upstatemerch.com/download-our-t-shirt-mockup-template-for-free/</p>
+		</div>
+
+	</div><!-- end store inner -->
+	
+</div><!-- end store wrapper -->

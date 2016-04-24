@@ -1,0 +1,83 @@
+<div class="store-wrapper">
+	<div class="store-inner">
+
+<div class="index-description visible-lg-block visible-md-block">
+  <h1>SLAVE UNIT APPAREL</h1>
+  <p>is a clothing and accessories line inspired by digital art, electronic and industrial rock music and the wretchedness of existence.</p>
+</div>
+<div class="index-description-sm visible-sm-block visible-xs-block">
+  <h1>SLAVE UNIT APPAREL</h1>
+  <p>is a clothing and accessories line inspired by digital art, electronic and industrial rock music and the wretchedness of existence.</p>
+</div>
+
+
+
+<!-- CAROUSEL -->
+
+    <div class="carousel visible-lg-block visible-md-block">
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+        <ol class="carousel-indicators">
+
+<!-- Make number of products match number of indicators in the carousel -->
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+  <!-- in brackets, started at 1 to skip first product -->
+            <% @products[1..50].each do |product| %>
+              <li data-target="#carousel-example-generic" data-slide-to="1" ></li>
+            <% end %>
+        </ol>
+<!-- Make number of products match number of indicators in the carousel -->
+
+  <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <% @products.each do |product| %>
+      	    <div class="item<%= " active" if product == @products.first %>">
+      	      <%= image_tag (product.photo_file_name), :style => "margin: auto", :class => "img-responsive" %>
+      	      <div class="carousel-caption">
+      	        <p><%= product.name %></p> 
+      	      </div>
+      	    </div>
+          <% end %>
+        </div>
+
+      </div>
+
+  <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+<!-- CAROUSEL -->
+
+
+
+  	<div class="featured-main visible-lg-block visible-md-block">
+  		<h1>Featured Product:</h1>
+  		<h2><%= @featured_product.name %></h2>	  	
+  			<p><%= @featured_product.description %></p> 		
+  			<h3>How it looks like:</h3>	  		
+  	  	<%= image_tag @featured_product.photo.url, :class => "img-responsive" %>
+  		<h4>Available Late 2016</h4>	
+      <a href="/products"><button type="button" class="btn btn-danger">PREVIEW WAVE 1</button></a>
+  	</div>
+
+    <div class="featured-main-sm visible-sm-block visible-xs-block">
+      <h1>Featured Product:</h1>
+      <h2><%= @featured_product.name %></h2>      
+        <p><%= @featured_product.description %></p>     
+        <h3>How it looks like:</h3>       
+        <%= image_tag @featured_product.photo.url, :class => "img-responsive" %>
+      <h4>Available Late 2016</h4> 
+      <div class="featured-button-sm">
+        <a href="/products"><button type="button" class="btn btn-danger">PREVIEW WAVE 1</button></a>
+      </div>
+    </div>
+
+ 	</div><!-- end store inner --> 
+</div><!-- end store wrapper -->

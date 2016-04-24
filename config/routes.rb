@@ -1,9 +1,47 @@
 Rails.application.routes.draw do
+ 
+  get 'order_items/create'
+
+  get 'order_items/update'
+
+  get 'order_items/destroy'
+
+  get 'carts/show'
+
+#COMMENTS
+  resources :products do
+  resources :comments
+  end
+#COMMENTS
+  devise_for :users
+  resources :users 
+  resources :orders, only: [:index, :show, :create, :destroy]
+
+# SHOPPING CART
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
+# SHOPPING CART
+
+  get 'static_pages/store'
+
+  get 'static_pages/about'
+
+  get 'static_pages/contact'
+
+  get 'static_pages/index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'static_pages#landing_page'
+
+  # EMAIL
+  post 'static_pages/thank_you'
+
+  # PAYMENTS
+  post 'payments/create'
+  get 'payments/create'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
