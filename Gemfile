@@ -54,3 +54,6 @@ group :production do
   gem 'rails_12factor'
   gem 'pg'
 end
+
+# PAPERCLIP uploading pics
+gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'
