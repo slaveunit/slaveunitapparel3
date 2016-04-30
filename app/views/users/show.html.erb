@@ -1,14 +1,72 @@
-<p id="notice"><%= notice %></p>
+<% if can? :update, :only => User %>
+	<div class="about-wrapper">
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+	<div class="about-inner visible-md-block visible-lg-block">
+		<h1>SLAVE UNIT APPAREL</h1>
+		<h2>CUSTOMER PROFILE</h2>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+		<p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+		<p>
+		  <strong>Name:</strong>
+		  <%= @user.first_name %>
+		  <%= @user.last_name %>
+		</p>
+
+		<p>
+		  <strong>Phone Number:</strong>
+		</p>
+
+		<p>
+		  <strong>Email:</strong>
+		  <%= @user.email %>
+		</p>
+
+		<p>
+		  <strong>Order History:</strong>
+		</p>
+
+<!-- BROKEN -->
+
+<!-- BROKEN -->
+			
+		<%= link_to 'Edit', edit_user_path(@user) %> 
+		<% if signed_in? && current_user.admin? %>
+			|<%= link_to 'Back', users_path %>
+		<% end %>
+
+	</div>
+
+	<div class="about-inner-sm visible-xs-block visible-sm-block">
+		<h1>SLAVE UNIT APPAREL</h1>
+		<h2>CUSTOMER PROFILE</h2>
+		<p id="notice"><%= notice %></p>
+
+		<p>
+		  <strong>Name:</strong>
+		  <%= @user.first_name %>
+		  <%= @user.last_name %>
+		</p>
+
+		<p>
+		  <strong>Phone Number:</strong>
+		</p>
+
+		<p>
+		  <strong>Email:</strong>
+		  <%= @user.email %>
+		</p>
+
+		<p>
+		  <strong>Order History:</strong>
+		</p>
+
+		<%= link_to 'Edit', edit_user_path(@user) %> 
+		<% if signed_in? && current_user.admin? %>
+			|<%= link_to 'Back', users_path %>
+		<% end %>
+
+	</div>
+
+	</div><!-- end about-wrapper -->
+<% end %>

@@ -1,24 +1,141 @@
-<p id="notice"><%= notice %></p>
+<div class="store-indivproduct">
+	<div class="store-indivproductinner">
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+		<div class="store-indivproduct-notice">
+			<h1 id="notice"><%= notice %></h1>
+		</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+		<div class="store-indivproduct-name"=>
+		  <h1><%= @product.name %></h1>
+		</div>
 
-<p>
-  <strong>Colour:</strong>
-  <%= @product.colour %>
-</p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<!-- DISPLAYS PRODUCT-->
+	<!-- PAPERCLIP -->
+		<div>
+			<h2>How it looks like:</h2>
+		</div>
+		<div class="store-indivproduct-photo">
+
+	<!-- ELEVATEZOOM added, id, data_zoom_image and script -->
+			<%= image_tag @product.photo.url, :class => "img-responsive img-zoom", :data_zoom_image => "@product.photo.url" %>
+			<script>
+				$(document).on('ready page:load', function () {// document ready
+					$(".img-zoom").elevateZoom({scrollZoom : true});
+				});//end document ready
+			</script>
+	<!-- ELEVATEZOOM added, id, data_zoom_image and script -->
+	
+		</div>
+	<!-- PAPERCLIP -->
+
+
+		<div class="store-indivproduct-desc">
+		  <p><%= @product.description %></p>
+		  <h3>Available Late 2016</h3>
+		</div>	
+
+		<div>
+		  <h2>Colour:</strong></h2>
+		</div>
+
+		<div class="store-indivproduct-color">
+			<p><%= @product.colour %></p>
+		</div>
+
+
+<!-- SIZE AND ADD TO CART BUTTONS -->
+		<div class="btn-group">
+	  		<button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    		Available Sizes <span class="caret"></span>
+	  		</button>
+			<ul class="dropdown-menu">
+			<li><a href="#">SM</a></li>
+			<li><a href="#">MD</a></li>
+			<li><a href="#">LG</a></li>
+			</ul>
+
+		</div>
+<!-- DISPLAYS PRODUCT-->
+
+<!-- ADD TO CART BUTTON -->
+    <div class="well">
+  		<div class="row">
+    		<div>
+		      <%= form_for @order_item, remote: true do |f| %>
+		        <h4 style="font-family: 'Share Tech Mono', sans-serif;">The Small Price to Pay: 
+		          <span style="color: green">
+		            <%= number_to_currency @product.price %>
+		          </span>
+		        
+		        </h4>
+		        <h4 style="font-family: 'Share Tech Mono', sans-serif;">
+		          How many:
+		        </h4>
+		        <div class="input-group">
+		          <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+		          <div class="input-group-btn, add-to-cart-button">
+		            <%= f.hidden_field :product_id, value: @product.id %>
+		            <%= f.submit "ADD IT", class: "btn btn-danger" %>
+		          </div>
+		        </div>
+		      <% end %>
+		    </div>
+		  </div>
+		</div>
+<!-- ADD TO CART BUTTON -->
+
+<!-- SIZE AND ADD TO CART BUTTONS -->
+
+
+
+
+
+<!-- RATY average rating -->
+			<h2>Average Rating: <div class="rated" data-score="<%= @product.average_rating %>"></div></h2>
+<!-- RATY average rating -->
+
+<!-- COMMENTS -->
+
+
+		<% if signed_in? %>
+			<h4>Review this:</h4>
+<!-- AJAX added, remote: true -->
+			<%= form_for([@product, @product.comments.build], remote: true) do |f| %>
+<!-- AJAX added, remote: true -->
+				<p>
+					<%= f.label :body, "What do you think?" %><br>
+					<%= f.text_area :body %>
+				</p>
+
+<!-- RATY -->
+				<p>Rate it:
+					<div class="rating"></div>
+				</p>
+<!-- RATY -->
+
+				<p>
+					<%= f.submit "TRANSMIT", :class => 'btn btn-danger' %>
+					
+				</p>
+			<% end %>
+			
+		<% end %>
+
+<!-- RATY -->
+		<%= render 'comments' %>
+<!-- RATY -->
+
+<!-- PAGINATION -->
+			<%= will_paginate @comments %>
+<!-- PAGINATION -->
+
+<!-- COMMENTS -->
+
+		<div class="store-indivproduct-buttons">
+			<% if signed_in? && current_user.admin? %><%= link_to 'Edit', edit_product_path(@product) %>|<% end %>
+			<%= link_to 'Back to Product Index', products_path %>
+		</div>
+	</div>
+</div>

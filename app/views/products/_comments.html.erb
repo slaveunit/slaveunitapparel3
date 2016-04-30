@@ -1,0 +1,22 @@
+<div class="product_reviews">
+
+	<% @comments.each do |comment| %>
+		<div class="row">
+			<hr>
+			<p><%= comment.user.first_name %> <small><em><%= "#{time_ago_in_words(comment.created_at)} ago" %></em></small></p>
+
+			<div class="rated" data-score="<%= comment.rating %>"></div>
+			<p><%= comment.body %></p>
+
+		<!-- DELETE COMMENT BUTTON -->	
+			<p>
+				<% if signed_in? && current_user.admin? %>
+					<%= link_to 'DELETE COMMENT', product_comment_path(@product, comment), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+				<% end %>
+			</p>
+		<!-- DELETE COMMENT BUTTON -->
+
+		</div>
+	<% end %>
+</div>
+

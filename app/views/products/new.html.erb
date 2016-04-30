@@ -1,5 +1,16 @@
-<h1>New Product</h1>
+<div class="store-wrapper">
+	<div class="store-inner">
 
-<%= render 'form' %>
+	<h1>New product</h1>
 
-<%= link_to 'Back', products_path %>
+	<!-- PAPERCLIP -->
+	<%= form_for @product, url: products_path, html: { multipart: true } do |form| %>
+	<% end %>
+	<!-- PAPERCLIP -->
+
+	<%= render 'form' %>
+
+	<%= link_to 'Back', products_path %>
+
+	</div><!-- end store inner -->
+</div><!-- end store wrapper -->

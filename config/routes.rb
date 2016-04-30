@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
  
-  devise_for :users
-  resources :users
-  resources :products
   get 'order_items/create'
 
   get 'order_items/update'
@@ -11,7 +8,19 @@ Rails.application.routes.draw do
 
   get 'carts/show'
 
+#COMMENTS
+  resources :products do
+  resources :comments
+  end
+#COMMENTS
+  devise_for :users
+  resources :users 
+  resources :orders, only: [:index, :show, :create, :destroy]
 
+# SHOPPING CART
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
+# SHOPPING CART
 
   get 'static_pages/store'
 
@@ -27,7 +36,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'static_pages#landing_page'
 
+  # EMAIL
+  post 'static_pages/thank_you'
 
+  # PAYMENTS
+  post 'payments/create'
+  get 'payments/create'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

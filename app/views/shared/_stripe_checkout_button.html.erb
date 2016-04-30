@@ -1,0 +1,11 @@
+<form action="" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-amount="<%= @order_items.map{|o| o.unit_price.to_f}.inject(0){|sum,x| sum + x } * 100 %>"
+    data-name="SLAVE UNIT APPAREL CO."
+    data-description="Show Me the Money"
+    data-image="/128x128.png"
+    data-locale="auto">
+  </script>
+</form>

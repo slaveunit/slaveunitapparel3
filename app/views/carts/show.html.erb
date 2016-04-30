@@ -1,0 +1,55 @@
+<div class="about-wrapper">
+
+	<div class="about-inner visible-md-block visible-lg-block">
+		<h1>Shopping Cart</h1>
+		<h3>Available Late 2016</h3>
+
+<!-- PRICE BEFORE SHIPPING -->
+		<span style="color: yellow; font-family: 'Michroma'" >
+			<%= "The price to pay for all #{current_order.order_items.size} item/s in Cart: #{number_to_currency current_order.subtotal} " %>
+		</span>
+<!-- PRICE BEFORE SHIPPING -->
+
+		<div class="shopping-cart">
+			<%= render "shopping_cart" %>
+		</div>
+
+<!-- STRIPE BUTTON -->
+      <%= form_tag "/payments/create" do %>
+        <%= render partial: "shared/stripe_checkout_button" %>
+      <% end %>
+<!-- STRIPE BUTTON --> 
+		
+	</div><!-- END visible-md-block visible-lg-block -->
+
+	
+
+	<div class="about-inner-sm visible-xs-block visible-sm-block">
+		<h1>Shopping Cart</h1>
+		<h3>Available Late 2016</h3>
+
+<!-- PRICE BEFORE SHIPPING -->
+		<span style="color: yellow; font-family: 'Michroma'" >
+			<%= "The price to pay for all #{current_order.order_items.size} item/s in Cart: #{number_to_currency current_order.subtotal} " %>
+		</span>
+<!-- PRICE BEFORE SHIPPING -->
+
+		<div class="shopping-cart">
+			<%= render "shopping_cart" %>
+		</div>
+
+<!-- STRIPE BUTTON -->
+    <%= form_tag "/payments/create" do %>
+      <%= render partial: "shared/stripe_checkout_button" %>
+    <% end %>
+<!-- STRIPE BUTTON --> 
+
+	</div><!-- END visible-sm-block visible-sm-block -->
+
+
+
+</div>
+
+
+
+

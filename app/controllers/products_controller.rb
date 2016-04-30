@@ -1,15 +1,58 @@
-class ProductsController < ApplicationController
+ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+
+# So admin abilities are applied to only these.  
+# So public can view product without signing in.
+  load_and_authorize_resource :only => [:new, :update, :create, :destroy]
+
+  # ANGULAR
+  respond_to :json, :html
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+  # FOR SEARCH FORM TO USE LIKE IN DEVELOPMENT
+      if Rails.env.development?
+        if params[:q]
+          search_term = params[:q]
+          @products = Product.where("name LIKE ?", "%#{search_term}%")
+          
+          # ANGULAR
+          respond_with @products
+          
+        else
+          @products = Product.all
+# SHOPPING CART
+    @order_item = current_order.order_items.new
+# SHOPPING CART      
+        end
+      end
+  # FOR SEARCH FORM TO USE ILIKE IN PRODUCTION
+      if Rails.env.production?
+        if params[:q]
+          search_term = params[:q]
+          @products = Product.where("name ILIKE ?", "%#{search_term}%")
+        else
+          @products = Product.all
+# SHOPPING CART
+    @order_item = current_order.order_items.new
+# SHOPPING CART          
+        end
+      end
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product
+    @product = Product.find(params[:id])
   end
 
   # GET /products/1
   # GET /products/1.json
+  # PAGINATE
   def show
+    @comments = @product.comments.order("created_at DESC").paginate(page: params[:page], per_page: 3)
+    @product = Product.find(params[:id])
+    @order_item = current_order.order_items.new
   end
 
   # GET /products/new
@@ -23,9 +66,9 @@ class ProductsController < ApplicationController
 
   # POST /products
   # POST /products.json
+  # PAPERCLIP, added for: "params[:photo]"
   def create
-    @product = Product.new(product_params)
-
+    @product = Product.new(product_params, params[:photo] )
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -51,6 +94,7 @@ class ProductsController < ApplicationController
     end
   end
 
+
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
@@ -61,14 +105,16 @@ class ProductsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def product_params
-      params.require(:product).permit(:name, :description, :colour, :price)
-    end
+  private
+
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+# PAPERCLIP added :photo
+# PRICE added :decimal
+  def product_params
+    params.require(:product).permit :name, :description, :image_url, :colour, :photo, :photo_file_name, :photo_file_size, :photo_content_type, :photo_updated_at, :price, :decimal, :precision, :scale
+  end
+
+
 end

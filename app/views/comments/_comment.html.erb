@@ -1,0 +1,23 @@
+<!--  Script to run RATY -->
+<script type="text/javascript">
+	$('.rating').raty( { path: '/assets', scoreName: 'comment[rating]' });
+	$('.rated').raty({ path: '/assets',
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		}
+	});
+</script>
+<!--  Script to run RATY -->
+
+
+<!-- AJAX to post immediately comment just posted without relaoding page. -->
+<!-- In conjunction with comments/create partial and comments_controller. -->
+<div class="row">
+	<hr>
+	<p><%= comment.user.first_name %> <small><em><%= "#{time_ago_in_words(comment.created_at)} ago" %></em></small></p>
+	<div class="rated" data-score="<%= comment.rating %>"></div>
+	<p><%= @comment.body %></p>
+</div>
+<!-- AJAX to post immediately comment just posted without relaoding page. -->
+<!-- In conjunction with comments/create partial and comments_controller. -->
