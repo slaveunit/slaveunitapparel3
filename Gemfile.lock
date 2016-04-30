@@ -316,8 +316,8 @@ DEPENDENCIES
   brakeman
   byebug
   cancancan
-  coffee-rails (~> 4.0.0)
-  coffee-script-source (= 1.8.0)
+  coffee-rails
+  coffee-script-source
   devise
   factory_girl_rails (~> 4.0)
   guard
@@ -341,4 +341,4 @@ DEPENDENCIES
   will_paginate (~> 3.0.6)
 
 BUNDLED WITH
-   1.11.0
+   1.11.2
