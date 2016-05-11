@@ -12,19 +12,13 @@
 <!-- SHOPPING CART -->      
       <div class="store-table">
         <table>
+          
           <thead>
             <tr>
               <th>PRODUCT NAME</th>
               <th class="store-product-image">IMAGE</th>
-              
               <th class="store-product-desc">PRODUCT DESCRIPTION</th>
               <th class="store-product-colour">COLOUR</th>
-            
-              
-              <% if current_user.try(:admin?) %>
-              <th class="store-product-actions">ACTIONS</th>
-              <% end %>
-              
               <th colspan="3"></th>
             </tr>
           </thead>
@@ -33,17 +27,13 @@
 
             <% @products.each do |product| %>
 
-              <% cache product do %><!-- CACHE KEY-->
-
 <!-- redirect to _product in views -->
                 <%= render product %>
 <!-- redirect to _product in views -->
 
-              <% end %><!-- CACHE KEY-->
-
-
             <% end %>
           </tbody>
+
         </table>
       </div>
 
@@ -51,13 +41,11 @@
       <%= link_to 'New Product', new_product_path %>
       <% end %>
 
-
-
-
-
-
-
     </div><!-- end store-title -->
+
+
+
+
 
     <div class="products-index-sm">
           <div class="products-index-title-sm visible-xs-block visible-sm-block"> 
@@ -67,14 +55,11 @@
           
           <div class="products-index-sm">
             
-
               <tbody>
                 <% @products.each do |product| %>
     <!-- redirect to _product in views -->
                   <%= render product %>
     <!-- redirect to _product in views -->
-
-
 
                 <% end %>
               </tbody>

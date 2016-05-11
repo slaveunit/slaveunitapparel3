@@ -1,6 +1,6 @@
 <div class="visible-lg-block visible-md-block">
 
-<% cache product do %><!-- CACHE KEY-->
+
 	<tr>
 		<td><a href="/products/<%= product.id %>" target="_blank"><%= product.name %></a></td>
 		<td><a href="/products/<%= product.id %>" target="_blank"><%= image_tag (product.photo), :style => "margin: auto", :class => "img-responsive" %></a></td>
@@ -8,19 +8,18 @@
 		<td><%= product.colour %></td>
 
 
-
 		<td><!-- SHOPPING CART -->
 	            <%= render "product_row", product: product, order_item: @order_item %>
 		</td><!-- SHOPPING CART --> 
 
 
-		<% if current_user.try(:admin?) %>
+		<% if signed_in? && current_user.admin? %>
 		<td><%= link_to 'Show', product %></td>
 		<td><%= link_to 'Edit', edit_product_path(product) %></td>
 		<td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 		<% end %>
 	</tr>
-<% end %><!-- CACHE KEY-->
+
 
 </div>
 
