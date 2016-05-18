@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160430222152) do
+ActiveRecord::Schema.define(version: 20160518204329) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -28,11 +28,12 @@ ActiveRecord::Schema.define(version: 20160430222152) do
   create_table "order_items", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "order_id"
-    t.decimal  "unit_price",  precision: 12, scale: 3
+    t.decimal  "unit_price",   precision: 12, scale: 3
     t.integer  "quantity"
-    t.decimal  "total_price", precision: 12, scale: 3
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.decimal  "total_price",  precision: 12, scale: 3
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "product_size"
   end
 
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
