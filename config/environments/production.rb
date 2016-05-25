@@ -88,8 +88,8 @@ Rails.application.configure do
       :bucket => ENV['S3_BUCKET_NAME'],
       :access_key_id => ENV['ACCESS_KEY_ID'],
       :secret_access_key => ENV['SECRET_ACCESS_KEY'],
-      :s3_host_name => 's3-website-us-west-2.amazonaws.com',
-      :s3_endpoint => 's3-website-us-west-2.amazonaws.com',
+      :s3_host_name => 's3-external-1.amazonaws.com',
+      :s3_endpoint => 's3-external-1.amazonaws.com',
       :url => ":s3_domain_url"
     }
   }
