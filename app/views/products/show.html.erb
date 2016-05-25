@@ -53,18 +53,9 @@
 		</div>
 
 
-<!-- SIZE AND ADD TO CART BUTTONS -->
-		<div class="btn-group">
-	  		<button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	    		Available Sizes <span class="caret"></span>
-	  		</button>
-			<ul class="dropdown-menu">
-			<li><a href="#">SM</a></li>
-			<li><a href="#">MD</a></li>
-			<li><a href="#">LG</a></li>
-			</ul>
 
-		</div>
+
+
 <!-- DISPLAYS PRODUCT-->
 
 <!-- ADD TO CART BUTTON -->
@@ -96,13 +87,17 @@
 
 <!-- SIZE AND ADD TO CART BUTTONS -->
 
-
-
-
-
 <!-- RATY average rating -->
 			<h2>Average Rating: <div class="rated" data-score="<%= @product.average_rating %>"></div></h2>
 <!-- RATY average rating -->
+
+<!-- RATY -->
+		<%= render 'comments' %>
+<!-- RATY -->
+
+
+
+
 
 <!-- COMMENTS -->
 
@@ -131,9 +126,7 @@
 			
 		<% end %>
 
-<!-- RATY -->
-		<%= render 'comments' %>
-<!-- RATY -->
+
 
 <!-- PAGINATION -->
 			<%= will_paginate @comments %>

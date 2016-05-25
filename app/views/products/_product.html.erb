@@ -1,8 +1,9 @@
 <div class="product-index col-lg-4">
-	<a href="/products/<%= product.id %>" target="_blank"><%= product.name %></a>
+	<a href="/products/<%= product.id %>" target="_blank"><h2><%= product.name %></h2></a>
 	<a href="/products/<%= product.id %>" target="_blank"><%= image_tag (product.photo), :style => "margin: auto", :class => "img-responsive" %></a>
-	<a href="/products/<%= product.id %>" target="_blank"><%= product.description %></a>
-	<%= product.colour %>
+	<a href="/products/<%= product.id %>" target="_blank"><p><%= product.description %></p></a>
+	<p>COLOR:<%= product.colour %></p>
+	<p>SIZE:<%= product.size %></p>
 	<% if signed_in? && current_user.admin? %>
 		<%= link_to 'Show', product %>
 		<%= link_to 'Edit', edit_product_path(product) %>

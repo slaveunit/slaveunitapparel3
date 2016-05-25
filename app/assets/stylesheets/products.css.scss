@@ -3,6 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.product-index p {
+	  font-family: 'Share Tech Mono', sans-serif;
+	  color: darkgray;
+	  text-align: center;
+}
+
+.product-index h2 {
+	   font-family: 'Michroma', sans-serif;
+	   text-transform: uppercase;
+	  color: black;
+	  text-align: center;
+}
+
+
+
 .store-indivproduct {
  	width: 100%; 
 	height: 1000px;
@@ -29,6 +44,7 @@
    font-family: 'Michroma', sans-serif;
   font-size: 275%;
   color: black; 
+  text-transform: uppercase;
   padding-bottom: 3%;
 }
 

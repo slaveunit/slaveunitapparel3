@@ -76,6 +76,9 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+
+
+
   #paperclip amazon aws
   config.paperclip_defaults = {
       :storage => :s3,
@@ -83,13 +86,15 @@ Rails.application.configure do
       :s3_region => ENV['REGION'],
       :s3_credentials => {
       :bucket => ENV['S3_BUCKET_NAME'],
-      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => ENV['AWS_ACCESS_KEY_ID'],
+      :access_key_id => ENV['ACCESS_KEY_ID'],
+      :secret_access_key => ENV['SECRET_ACCESS_KEY'],
       :s3_host_name => 's3.amazonaws.com',
       :s3_endpoint => 's3.amazonaws.com',
       :url => ":s3_domain_url"
     }
   }
+
+
 
 
   ActionMailer::Base.smtp_settings = {
