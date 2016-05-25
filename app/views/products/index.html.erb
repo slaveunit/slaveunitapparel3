@@ -3,28 +3,20 @@
     
     <div class="store-title visible-lg-block visible-md-block">
       <h1>SLAVE UNIT APPAREL</h1>
+        <div class="new-product-button">
+          <% if current_user.try(:admin?) %>
+            <%= link_to 'New Product', new_product_path, :class => 'btn btn-danger' %>
+          <% end %>
+        </div>
       <h2>PRODUCT INDEX</h2>
       <h3>Available Late 2016</h3>
-<!-- SHOPPING CART -->
+
+<!-- "Items in cart" SHOPPING CART -->
     <h3 class="cart-text">
       <%= render 'layouts/cart_text' %>
     </h3>
-<!-- SHOPPING CART -->      
-      <div class="store-table">
-        <table>
-          
-          <thead>
-            <tr>
-              <th>PRODUCT NAME</th>
-              <th class="store-product-image">IMAGE</th>
-              <th class="store-product-desc">PRODUCT DESCRIPTION</th>
-              <th class="store-product-colour">COLOUR</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-
-          <tbody>
-
+<!-- "Items in cart" SHOPPING CART -->    
+      
             <% @products.each do |product| %>
 
 <!-- redirect to _product in views -->
@@ -32,49 +24,7 @@
 <!-- redirect to _product in views -->
 
             <% end %>
-          </tbody>
-
-        </table>
-      </div>
-
-      <% if current_user.try(:admin?) %>
-      <%= link_to 'New Product', new_product_path %>
-      <% end %>
-
+        
     </div><!-- end store-title -->
-
-
-
-
-
-    <div class="products-index-sm">
-          <div class="products-index-title-sm visible-xs-block visible-sm-block"> 
-          <h1>SLAVE UNIT APPAREL</h1>
-          <h2>PRODUCT INDEX</h2>
-          <h3>Available Late 2016</h3>
-          
-          <div class="products-index-sm">
-            
-              <tbody>
-                <% @products.each do |product| %>
-    <!-- redirect to _product in views -->
-                  <%= render product %>
-    <!-- redirect to _product in views -->
-
-                <% end %>
-              </tbody>
-           
-          </div>
-
-          <% if current_user.try(:admin?) %>
-          <%= link_to 'New Product', new_product_path %>
-          <% end %>
-
-        </div><!-- end store-title-sm --> 
-    </div>
-  </div><!-- end store inner -->
-
-
-</div><!-- end store wrapper -->
-
-
+  </div>
+</div>

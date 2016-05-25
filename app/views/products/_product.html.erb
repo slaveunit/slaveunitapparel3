@@ -1,45 +1,11 @@
-<div class="visible-lg-block visible-md-block">
-
-
-	<tr>
-		<td><a href="/products/<%= product.id %>" target="_blank"><%= product.name %></a></td>
-		<td><a href="/products/<%= product.id %>" target="_blank"><%= image_tag (product.photo), :style => "margin: auto", :class => "img-responsive" %></a></td>
-		<td><a href="/products/<%= product.id %>" target="_blank"><%= product.description %></a></td>
-		<td><%= product.colour %></td>
-
-
-		<td><!-- SHOPPING CART -->
-	            <%= render "product_row", product: product, order_item: @order_item %>
-		</td><!-- SHOPPING CART --> 
-
-
-		<% if signed_in? && current_user.admin? %>
-		<td><%= link_to 'Show', product %></td>
-		<td><%= link_to 'Edit', edit_product_path(product) %></td>
-		<td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		<% end %>
-	</tr>
-
-
-</div>
-
-
-
-<div class="product-index-sm visible-sm-block visible-xs-block">
-
-	<h1><a href="/products/<%= product.id %>" target="_blank"><%= product.name %></a></h1>
-
-	<p><a href="/products/<%= product.id %>" target="_blank"><%= image_tag (product.photo), :style => "margin: auto", :class => "img-responsive" %></a></p>
-	<p><a href="/products/<%= product.id %>" target="_blank"><%= product.description %></a></p>
-
-	<!-- PRICE -->
-	<p>US$<%= product.price %></p>
-	<!-- PRICE -->
-
-	<% if current_user.try(:admin?) %>
-	<p><%= link_to 'Show', product %></p>
-	<p><%= link_to 'Edit', edit_product_path(product) %></p>
-	<p><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<div class="product-index col-lg-4">
+	<a href="/products/<%= product.id %>" target="_blank"><%= product.name %></a>
+	<a href="/products/<%= product.id %>" target="_blank"><%= image_tag (product.photo), :style => "margin: auto", :class => "img-responsive" %></a>
+	<a href="/products/<%= product.id %>" target="_blank"><%= product.description %></a>
+	<%= product.colour %>
+	<% if signed_in? && current_user.admin? %>
+		<%= link_to 'Show', product %>
+		<%= link_to 'Edit', edit_product_path(product) %>
+		<%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
 	<% end %>
-
 </div>
