@@ -3,7 +3,7 @@ class OrderItem < ActiveRecord::Base
   belongs_to :order
   belongs_to :payments
 
-  validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
+
   validate :product_present
   validate :order_present
 
@@ -18,7 +18,7 @@ class OrderItem < ActiveRecord::Base
   end
 
   def total_price
-    unit_price * quantity
+    unit_price
   end
 
 
@@ -38,6 +38,6 @@ private
 
   def finalize
     self[:unit_price] = unit_price
-    self[:total_price] = quantity * self[:unit_price]
+    self[:total_price] = self[:unit_price]
   end
 end

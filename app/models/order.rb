@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
   	before_save :update_subtotal
 
   	def subtotal
-    	order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
+    	order_items.collect { |oi| oi.valid? ? (oi.unit_price) : 0 }.sum
   	end
 
 private

@@ -22,7 +22,7 @@ class OrderItemsController < ApplicationController
 
 private
   def order_item_params
-    params.require(:order_item).permit(:quantity, :product_id, :product_size)
+    params.require(:order_item).permit(:product_id, :product_size)
   end
   
 end
