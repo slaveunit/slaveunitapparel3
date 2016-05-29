@@ -17,11 +17,7 @@
           <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
           <div class="input-group-btn, add-to-cart-button">
             <%= f.hidden_field :product_id, value: product.id %>
-
-<!-- This line displays the actual size of the product in the shopping cart i.e. Small.  -->
             <%= f.hidden_field :product_size, value: product.size %>
-<!-- See _cart_row for the word Size -->
-
             <%= f.submit "ADD IT", class: "btn btn-danger" %>
           </div>
         </div>
