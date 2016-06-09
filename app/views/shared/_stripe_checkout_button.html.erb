@@ -1,4 +1,5 @@
 <form action="" method="POST">
+	<%= hidden_field_tag(:order, "@order") %>
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"

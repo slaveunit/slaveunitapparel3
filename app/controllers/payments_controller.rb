@@ -1,10 +1,8 @@
 class PaymentsController < ApplicationController
 
 	def create
-		@product = Product.find(params[:product_id])
-		@total_price = unit_price * quantity
-		@total_price = params[:total_price]
-
+		@order = current_order
+		@user = current_user
 # STRIPE, creating charges
 		# Set your secret key: remember to change this to your live secret key in production
 		# See your keys here https://dashboard.stripe.com/account/apikeys
@@ -16,16 +14,18 @@ class PaymentsController < ApplicationController
 		# Create the charge on Stripe's servers - this will charge the user's card
 		begin
 			charge = Stripe::Charge.create(
-			:amount => "@product.price", # amount in cents, again
+			:amount => 1000, # amount in cents, again
 			:currency => "usd",
 			:source => token,
 			:description => params[:stripeEmail]
 			)
 
 			if charge.paid
-				Order.create(:product_id => '@product_id',
+				Order.create(
+					:product_id => '@product_id',
+					:product_size => '@product_size',
 					:user_id => 'current_user',
-					:total_price => '@total_price'
+					:total => 'data-amount'
 			)
 			end
 
@@ -35,7 +35,7 @@ class PaymentsController < ApplicationController
     		err = body[:error]
     		flash[:error] = "Unfortunately, there was an error processing your payment: #{err[:message]}"
 		end
-		redirect_to product_path(@product)
+		redirect_to products_url
 # STRIPE, creating charges
 
 
