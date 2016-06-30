@@ -23,7 +23,7 @@ class PaymentsController < ApplicationController
 			if charge.paid
 				Order.create(
 					:product_id => '@product_id',
-					:product_size => '@product_size',
+					:product_size => 'product_size',
 					:user_id => 'current_user',
 					:total => 'data-amount'
 			)
